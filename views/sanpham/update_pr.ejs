@@ -1,0 +1,83 @@
+<%- include('../layout/header')  %>
+
+<div class="container-fluid mb-5 ">
+  <div class=" container p-3 mb-2 bg-light rounded-5 mt-5" style="min-height: 750px;">
+      <div class="text-center fs-1"> Update Product</div>
+
+      <form action=""  method="post" enctype="multipart/form-data" >
+
+        <div class="col-auto">
+          <label for="formGroupExampleInput" class="form-label">Title</label>
+          <input  class="form-control" id="formGroupExampleInput" name="title" value="<%= objSp.title  %>" required>
+        </div>
+    
+   
+          <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label">NameProduct</label>
+              <input  class="form-control" id="formGroupExampleInput" name="name" value="<%= objSp.name  %>" required>
+            </div>
+        
+             
+           
+          
+          
+          <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label">Price</label>
+              <input  class="form-control" id="formGroupExampleInput" name="price" value="<%= objSp.price  %>" required>
+            </div>
+
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label">Content</label>
+              <input  class="form-control" id="formGroupExampleInput" name="content" value="<%= objSp.content  %>" required>
+            </div>
+            
+            
+          
+            <!-- <div class="mt-1 form-check" > 
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Không Hoạt Động</label>
+            </div> -->
+            <div class="ml-3 mt-4">
+              
+              
+              <select  name="theloai">
+        
+                <% listTheLoai.forEach((row) => {
+                 
+                 let selected ='';
+                 if( String(row._id) == String (objSp.the_loai) ){
+                     selected= '   selected      '
+                 }
+                 
+                 %>
+                 <option 
+                 <%= selected %>
+                 value="<%= row.id  %>"><%= row.name  %></option>
+                
+         
+         
+                <% }) %>
+                 
+               </select></div>
+           
+              <div class="form-group mt-4" enctype="multipart/form-data">
+                <label for="formGroupExampleInput" class="form-label">Images</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" value="<%= objSp.image  %>" name="image" >
+                <img src="/<%= objSp.image %>" width="40" height="40" class="rounded-circle" alt="">
+              </div>
+             
+           
+                <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                  <button type="submit"  >Add</button>
+  
+                </div>
+          
+        </form>
+    
+        
+        
+        </div>
+  </div>
+
+</div>
+<%- include('../layout/footer')  %>

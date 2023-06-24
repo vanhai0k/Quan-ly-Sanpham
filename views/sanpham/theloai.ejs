@@ -1,0 +1,107 @@
+<%- include('../layout/header')  %>
+
+<div class=" container-fluid  p-3 mb-2  rounded-5 mt-3 table-responsive" style="min-height: 750px;">
+    <div class="fs-3 text-center mt-5">Danh sách loại sản phẩm</div>
+    <div class="row">
+      <div class="container">
+  
+        <div class=" d-grid gap-5 d-md-flex justify-content-center" >
+         
+    </div>
+      </div>
+     
+    </div>
+    
+      <table class="table table-hover table-bordered mt-3">
+          <thead>
+           
+            <tr class="text-center">
+              <th scope="col">Id</th>
+              <th scope="col">TypeName</th>
+              <th scope="col">Others</th>
+            
+            
+            </tr>
+          </thead>
+          <tbody class="justify-content-center text-center">
+
+           <% theloai.forEach(row => { %>
+          <tr>
+            <th  ><%= row.id  %></th>    
+           
+            <td><%= row.name  %></td>
+            <form id="delete-product">
+              
+            </form>
+
+            <td> <img src="/images/dl.png" width="30" height="30" class="rounded-circle m-lg-1" alt="" data-id="<%= row._id  %>" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+
+                <a href="/product/udtheloai/<%= row._id  %>"><img src="/images/ud.png" width="30" height="30" class="rounded-circle m-lg-1 " alt=""></a>       
+                
+                
+                             
+            </td>
+
+
+
+          </tr>
+
+
+          
+
+            
+
+
+           <% }) %>
+          </tbody>
+        </table>
+  
+     
+   
+       
+  
+       
+  </div>
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Xóa loại sản phẩm</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn xóa loại sản phẩm này hay không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" id="btn_delete" class="btn btn-primary">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded' , function(){
+      var productid;
+      var deleteForm = document.forms['delete-product'];
+      var btn_deletepr = document.getElementById('btn_delete');
+      const exampleModal = document.getElementById('staticBackdrop');
+      exampleModal.addEventListener('show.bs.modal', event =>{
+        const button = event.relatedTarget
+        productid = button.getAttribute('data-id');
+  
+      });
+      btn_deletepr.onclick = function(){
+        deleteForm.action = '/product/deletetheloai/' + productid + '?_method=DELETE';
+        deleteForm.submit();
+  
+      }
+    });
+  
+    
+  </script>
+  
+   
+
+<%- include('../layout/footer')  %>

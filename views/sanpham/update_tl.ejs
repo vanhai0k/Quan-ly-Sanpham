@@ -1,0 +1,31 @@
+
+<%- include('../layout/header')  %>
+
+<div class="container-fluid mb-5 ">
+    <div class=" container p-3 mb-2 bg-light rounded-5 mt-5" style="min-height: 750px;">
+        <div class="text-center fs-1">Update Categories </div>
+
+        <form action=""   method="post"  >
+            <div class="col-auto">
+                <label for="formGroupExampleInput" class="form-label">NameProduct</label>
+                <input  class="form-control"  name="name" value="<%= objSp.name  %>" required>
+              </div>
+                  <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                    <button type="submit"  >Update</button>
+                    <a href="/product/theloai" class="btn btn-secondary">  
+                      cancle
+                    </a>
+    
+                  </div>
+                
+          </form>
+      
+         
+          </div>
+    </div>
+
+</div>
+<%- include('../layout/footer')  %>
+
+   
+

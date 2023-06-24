@@ -1,0 +1,76 @@
+
+        <%- include('../layout/header')  %>
+
+        <div class="container-fluid mb-5 ">
+            <div class=" container p-3 mb-2 bg-light rounded-5 mt-2" style="height: 580px;width: 530px;">
+                <div class="text-center fs-1"> Thêm sản phẩm</div>
+    
+                <form action=""  method="post" enctype="multipart/form-data" >
+
+                  <div class="col-auto">
+                    <label for="formGroupExampleInput" class="form-label">Title</label>
+                    <input  class="form-control" id="formGroupExampleInput" name="title" required>
+                  </div>
+              
+             
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label">NameProduct</label>
+                        <input  class="form-control" id="formGroupExampleInput" name="name" required>
+                      </div>
+                  
+                       
+                     
+                    
+                    
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label">Price</label>
+                        <input  class="form-control" id="formGroupExampleInput" name="price" required>
+                      </div>
+
+                      <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label">Content</label>
+                        <input  class="form-control" id="formGroupExampleInput" name="content" required>
+                      </div>
+                      
+                      
+                    
+                      <!-- <div class="mt-1 form-check" > 
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Không Hoạt Động</label>
+                      </div> -->
+                      <div class="ml-3 mt-4">
+                        
+                        
+                        <select class="form-select" aria-label="Default select example" name="theloai">
+                        <label for="formGroupExampleInput" class="form-label">Type</label>
+
+                        <% listtheloai.forEach((row) => { %>
+                          <option value="<%= row.id  %>"><%= row.name  %></option>
+                                          
+                         <% }) %>
+                          
+                        
+                      </select></div>
+                     
+                        <div class="form-group mt-4">
+                          <label for="formFile" class="form-label">Images</label>
+                          <input type="file"  class="form-control" id="formFile" name="image" >
+                        </div>
+                     
+                          <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                            <button type="submit"   >Lưu sản phẩm</button>
+            
+                          </div>
+                    
+                  </form>
+              
+                 
+                  </div>
+            </div>
+        
+        </div>
+        <%- include('../layout/footer')  %>
+       
+           
+
+   

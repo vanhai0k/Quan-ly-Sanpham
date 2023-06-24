@@ -1,0 +1,154 @@
+  <%- include('../layout/header') %>
+<div class="container-fluid">
+  <div class="fs-1 m-lg-4 text-center">Danh sách sản phẩm</div>
+  <div class="  container  p-3 mb-2  rounded-5 mt-3 table-responsive" style="min-height: 750px ;  ">
+   
+    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div class="container justify-content-center  row mt-4">
+
+       
+        <div class=" row container   col-4 ">
+          <div class="  col-8 ">
+            
+            <form action="/product/loc" method="post"> 
+            <select class="form-select" aria-label="Default select example" name="loc" >
+          <% listtheloai.forEach((row) => { %>
+
+
+            <option  
+           
+            value="<%= row.id  %>"><%= row.name  %></option>
+           
+          <% }) %>
+        </select>
+      </div>
+
+        <div class=" col-4  ">
+          <button class="btn btn-danger" type="submit"  >Filter</button>
+
+        </div>
+      
+      </form> 
+
+      <!-- <div>
+        <form class="d-flex" role="search" >
+            <select name="xep" id="" style="width: 100px;margin-left: 200px;"
+                class="form-control me-2">
+                <option value="1">A-Z</option>
+                <option value="-1">Z-A</option>
+            </select>
+
+            <button type="submit" class="btn btn-outline-success"
+               >Xếp</button>
+        </form>
+    </div> -->
+         
+        
+      
+      </div> 
+        <div class="  text-center   col-6 " >
+         
+          <div  class="" >
+            <form class=" d-flex " action="/product/tim" method="post" role="search">
+             
+                <input class="form-control form-control-sm me-1" type="search" placeholder="Search" aria-label="Search" name="name" required>
+                <button class="btn btn-danger" type="submit">Search</button>    
+            
+                
+            </form>
+          </div>
+         
+          <!-- <a href="/product/addproduct" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">Add Products</a>  -->
+    </div>
+      
+    </div>   
+      <table class="table table-bordered border-primary mt-3 container" >
+          <thead  class="table-dark">          
+            <tr class="text-center">
+              <th scope="col">Id</th>
+              <th scope="col">Images</th>
+              <th scope="col">Name</th>             
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>   
+              <th scope="col">Type</th>         
+              <th scope="col">Other</th>
+            </tr>
+          </thead>
+          <tbody class="justify-content-center text-center">
+            <% product.forEach((row,index) => { %>            
+                <tr>
+                    <th scope="row" ><%= index  %></th>                   
+                    <td> <img src="/<%= row.image %>" width="40" height="40" class="rounded-circle" alt=""> </td>
+                    <td><%= row.name  %></td>
+                    <td><%= row.title %></td>
+                    <td><%= row.price %></td>    
+                    <td><%= row.the_loai.name %></td>   
+                        
+         <form action="" id="delete-product"></form>
+                    <td>   <img src="/images/dl.png" data-id="<%= row._id  %>"  width="30" height="30" class="rounded-circle m-lg-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  alt="">
+                    <!-- Button trigger modal -->
+
+
+
+                    </a>
+
+                      <a href="/product/updateproduct/<%= row._id  %>"><img src="/images/ud.png" width="30" height="30" class="rounded-circle m-lg-1 " alt=""></a>       
+                      
+                      
+                      <a href="/product/chitiet/<%= row._id  %>"   >
+                      <img src="/images/dt.png" width="30" height="30" class="rounded-circle m-lg-1" alt="">
+                     </a>                   
+                  </td>
+                  </tr>
+                        
+                <% }) %>        
+          </tbody>
+        </table>
+
+    </div>
+   
+  </div>
+  
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do You want Delete product?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="btn_delete" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded' , function(){
+    var productid;
+    var deleteForm = document.forms['delete-product'];
+    var btn_deletepr = document.getElementById('btn_delete');
+    const exampleModal = document.getElementById('staticBackdrop');
+    exampleModal.addEventListener('show.bs.modal', event =>{
+      const button = event.relatedTarget
+      productid = button.getAttribute('data-id');
+
+    });
+    btn_deletepr.onclick = function(){
+      deleteForm.action = '/product/delete/' + productid + '?_method=DELETE';
+      deleteForm.submit();
+
+    }
+  });
+
+  
+</script>
+
+    <%- include('../layout/footer') %>
