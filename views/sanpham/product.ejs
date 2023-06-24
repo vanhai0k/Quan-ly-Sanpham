@@ -51,7 +51,7 @@
           <div  class="" >
             <form class=" d-flex " action="/product/tim" method="post" role="search">
              
-                <input class="form-control form-control-sm me-1" type="search" placeholder="Search" aria-label="Search" name="name" required>
+                <input class="form-control form-control-sm me-1" type="search" placeholder="Tiềm kiếm theo title !!!" aria-label="Search" name="title" required>
                 <button class="btn btn-danger" type="submit">Search</button>    
             
                 
@@ -69,6 +69,7 @@
               <th scope="col">Images</th>
               <th scope="col">Name</th>             
               <th scope="col">Title</th>
+              <th scope="col">Quantity</th>
               <th scope="col">Price</th>   
               <th scope="col">Type</th>         
               <th scope="col">Other</th>
@@ -81,7 +82,8 @@
                     <td> <img src="/<%= row.image %>" width="40" height="40" class="rounded-circle" alt=""> </td>
                     <td><%= row.name  %></td>
                     <td><%= row.title %></td>
-                    <td><%= row.price %></td>    
+                    <td><%= row.quantity %></td>
+                    <td><%= row.price %> VNĐ </td>    
                     <td><%= row.the_loai.name %></td>   
                         
          <form action="" id="delete-product"></form>

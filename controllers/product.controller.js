@@ -32,6 +32,7 @@ exports.addProduct = async (req, res, next) => {
         objSp.title = req.body.title;
         objSp.name = req.body.name;
         objSp.price = req.body.price;
+        objSp.quantity = req.body.quantity;
         objSp.content = req.body.content;
         objSp.the_loai = req.body.theloai;
         objSp.image = req.file.filename;
@@ -76,6 +77,7 @@ exports.updateProduct = async (req, res, next) => {
         objSP.title = req.body.title;
         objSP.name = req.body.name;
         objSP.price = req.body.price;
+        objSP.quantity = req.body.quantity;
         objSP.content = req.body.content;
         objSP.the_loai = req.body.theloai;
         objSP._id = req.params.idsp;
@@ -243,7 +245,7 @@ res.render('sanpham/product', { title: 'Product', product: sp,listtheloai:listth
 exports.TimSP = async(req,res,next)=>{
 
 
-    var sp = await mymodel.spModel.find({name:req.body.name})
+    var sp = await mymodel.spModel.find({title:req.body.title})
     .populate('the_loai')// ten cot tham chieu 
 
     ;

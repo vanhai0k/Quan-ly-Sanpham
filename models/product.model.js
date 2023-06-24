@@ -9,6 +9,7 @@ const spSchema = new db.mongose.Schema(
         
         // yeu cau bat buoc phai nhap va chi nhap chuoi 
         price: {type:Number, require:true},
+        quantity: {type:Number, require:true},
         content: {type:String, require:true},
         the_loai: {type:db.mongose.Types.ObjectId, ref: 'theloaimodel'}
      
